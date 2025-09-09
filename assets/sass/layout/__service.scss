@@ -1,0 +1,80 @@
+@use "../abstracts";
+@use "../components";
+
+// // PC
+
+.service {
+    padding: 100px 0 40px;
+
+    &__heading {
+        @include abstracts.pj_heading;
+    }
+    &__desc {
+        @include abstracts.pj_desc;
+        margin: 20px auto 30px;
+        max-width: 528px;
+    }
+    &__link {
+        display: block;
+        margin-bottom: 70px;
+        color: #5d3bee;
+        font-family: "DM Sans";
+        font-size: 3.2rem;
+        font-weight: 500;
+        line-height: 1.25;
+        letter-spacing: -0.128rem;
+        text-decoration-line: underline;
+        text-underline-offset: 10px;
+        text-align: center;
+    }
+
+    &__item {
+        height: 520px;
+        width: 100%;
+        object-fit: cover;
+    }
+
+    &__dots {
+        @include components.dots;
+        display: none;
+    }
+
+    &__dot {
+        @include components.dot;
+
+        &::after {
+            @include components.dot--after;
+        }
+        &--active {
+            @include components.dot--active;
+            &::after {
+                @include components.dot--active--after;
+            }
+        }
+    }
+}
+
+// tablet
+@include abstracts.responsive(lg) {
+    .service {
+        &__list {
+            overflow: hidden;
+
+            .row {
+                flex-wrap: nowrap;
+            }
+        }
+        &__dots {
+            display: flex;
+        }
+    }
+}
+
+// mobile
+@include abstracts.responsive(sm) {
+    .service {
+        &__item {
+            height: 300px;
+        }
+    }
+}

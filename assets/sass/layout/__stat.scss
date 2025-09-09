@@ -1,0 +1,103 @@
+@use "../abstracts";
+@use "../components";
+//
+/*  STATS  */
+
+.stat {
+    background: linear-gradient(180deg, white 82%, abstracts.$bgColor_1 82%);
+    margin-top: 120px;
+
+    &__preHeading {
+        @include abstracts.flexLine;
+        justify-content: center;
+        gap: 10px;
+
+        //
+        color: #5d3bee;
+        font-size: 3.2rem;
+        font-weight: 500;
+        line-height: 1.25;
+        letter-spacing: -0.128rem;
+
+        &Icon {
+            width: 3rem;
+        }
+    }
+
+    &__heading {
+        @include abstracts.pj_heading;
+        margin: 10px 0 15px;
+    }
+
+    &__desc {
+        @include abstracts.pj_desc;
+        width: 570px;
+        margin: 0 auto;
+    }
+
+    &__body {
+        @include abstracts.flexLine;
+        justify-content: space-around;
+        max-width: 950px;
+        padding: 20px 0;
+        margin: 70px auto;
+        border-top: 1px solid rgba(abstracts.$grayText, 0.5);
+        border-bottom: 1px solid rgba(abstracts.$grayText, 0.5);
+    }
+
+    &__item {
+        &Num {
+            @include abstracts.pj_heading;
+            font-weight: 500;
+            text-decoration: underline;
+            text-decoration-thickness: 2px;
+            text-underline-offset: 8px;
+        }
+        &Label {
+            @include abstracts.pj_desc;
+            text-align: left;
+            line-height: 2;
+        }
+    }
+    //
+    &__video {
+        position: relative;
+        &Content {
+            @include abstracts.size(100%);
+        }
+        &Btn {
+            @include abstracts.size(100px);
+            @include abstracts.absCenter;
+            cursor: pointer;
+        }
+        &Tag {
+            user-select: none;
+            @include abstracts.pj_desc;
+            @include abstracts.absPosition($r: 10px, $b: 10px);
+            background-color: white;
+            padding: 10px 20px;
+        }
+    }
+}
+
+// tablet
+@include abstracts.responsive(lg) {
+}
+
+// mobile
+@include abstracts.responsive(sm) {
+    .stat {
+        &__desc {
+            width: 100%;
+        }
+        //
+        &__video {
+            &Btn {
+                scale: 0.7;
+            }
+            &Tag {
+                scale: 0.7;
+            }
+        }
+    }
+}

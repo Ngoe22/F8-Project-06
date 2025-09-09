@@ -1,0 +1,105 @@
+@use "../abstracts";
+@use "../components";
+
+// PC
+
+.footer {
+    padding: 50px 0 0;
+    &__top {
+        @include abstracts.flexSpb;
+        position: relative;
+    }
+
+    &__link {
+        @include abstracts.flexSpb;
+        gap: 10px;
+        //
+        &Wrap {
+            flex-shrink: 0;
+            @include abstracts.size(50px, 50px, 50%);
+            @include abstracts.flexCenter;
+            border: 1px solid rgba(128, 128, 128, 0.474);
+        }
+        &Icon {
+            width: 60%;
+        }
+        &Text {
+            font-size: 2.2rem;
+            font-weight: 500;
+            line-height: 1.36;
+            text-decoration-line: underline;
+        }
+    }
+
+    &__list {
+        @include abstracts.flexSpb;
+        gap: 43px;
+
+        //
+        color: abstracts.$grayText;
+        font-size: 1.8rem;
+    }
+
+    &__itemText {
+        display: block;
+        padding: 30px 0;
+    }
+
+    &__icon {
+        width: 90px;
+        @include abstracts.absCenter;
+    }
+    //
+
+    &__bot {
+        @include abstracts.flexSpb;
+        justify-content: space-around;
+        max-width: 1400px;
+        padding: 20px 0;
+        margin: 32px auto 0;
+        border-top: 1px solid rgba(128, 128, 128, 0.5);
+        //
+        color: abstracts.$grayText;
+        font-size: 1.8rem;
+        line-height: 1.66;
+        letter-spacing: -0.054rem;
+    }
+}
+
+// tablet
+@include abstracts.responsive(lg) {
+    .footer {
+        padding: 50px 0 0;
+        &__top {
+            @include abstracts.flexSpb;
+            position: relative;
+            flex-direction: column-reverse;
+        }
+
+        &__icon {
+            width: 90px;
+            position: static;
+            translate: 0 0;
+        }
+        //
+
+        &__bot {
+            flex-direction: column-reverse;
+            overflow: hidden;
+            border: none;
+            text-align: center;
+            &Left::before {
+                content: "";
+                display: block;
+                width: 100vw;
+                height: 1px;
+                background-color: rgba(128, 128, 128, 0.4);
+                margin: 20px 0 20px;
+            }
+        }
+    }
+}
+
+// mobile
+@include abstracts.responsive(sm) {
+}

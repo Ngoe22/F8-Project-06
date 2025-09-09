@@ -1,0 +1,101 @@
+@use "../abstracts";
+@use "../components";
+
+/*  FEEDBACK  */
+
+// PC
+
+.feedback {
+    background-image: url(../img/deco/background-img.png);
+    background-size: 20%;
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    background-color: abstracts.$bgColor_1;
+
+    padding: 150px 0 75px;
+    //
+    &__heading {
+        @include abstracts.pj_heading;
+    }
+    &__desc {
+        @include abstracts.pj_desc;
+        width: 570px;
+        margin: 20px auto 0;
+    }
+    &__list {
+        display: flex;
+        overflow: hidden;
+    }
+    &__item {
+        flex-shrink: 0;
+        width: 100%;
+    }
+
+    &__quote {
+        @include abstracts.pj_desc;
+        font-size: 2.4rem;
+        width: 680px;
+        margin: 60px auto 0;
+    }
+
+    &__author {
+        @include abstracts.flexLine;
+        gap: 10px;
+        justify-content: center;
+        margin-top: 36px;
+        //
+        &Avatar {
+            display: block;
+            @include abstracts.size(40px, 40px, 50%);
+            object-fit: cover;
+        }
+        &Name {
+            color: #080415;
+            font-size: 3rem;
+            font-weight: 500;
+            line-height: 1.33;
+        }
+        &From {
+            @include abstracts.pj_desc;
+            font-size: 1.6rem;
+            text-align: center;
+        }
+    }
+
+    //
+
+    &__dots {
+        @include components.dots;
+    }
+
+    &__dot {
+        @include components.dot;
+
+        &::after {
+            @include components.dot--after;
+        }
+        &--active {
+            @include components.dot--active;
+            &::after {
+                @include components.dot--active--after;
+            }
+        }
+    }
+}
+
+// tablet
+@include abstracts.responsive(lg) {
+    .feedback {
+        &__desc {
+            width: 100%;
+        }
+
+        &__quote {
+            width: 100%;
+        }
+    }
+}
+
+// mobile
+@include abstracts.responsive(sm) {
+}

@@ -1,0 +1,79 @@
+@use "./variables";
+
+// ---> responsive
+
+// @use "../abstracts";
+// @use "../components";
+
+// // PC
+
+// .xxx {
+//     &__inner {
+//     }
+//     &__heading {
+//         @include abstracts.pj_heading;
+//     }
+//     &__desc {
+//         @include abstracts.pj_desc;
+//     }
+// }
+
+// // tablet
+// @include abstracts.responsive(lg) {
+// }
+
+// // mobile
+// @include abstracts.responsive(sm) {
+// }
+
+
+
+// -----------------------------------------
+// @include abstracts.absCenter ;
+
+@mixin responsive($breakpoint) {
+    @media (max-width: map-get( variables.$grid-breakpoints ,  $breakpoint )) {
+        @content;
+    }
+}
+
+// ---> element
+
+@mixin size($w: auto, $h: auto, $border: auto) {
+    width: $w;
+    height: $h;
+    border-radius: $border;
+}
+
+@mixin flexCenter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin flexLine {
+    display: flex;
+    align-items: center;
+}
+
+@mixin flexSpb {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+// absolute
+@mixin absCenter {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+}
+
+@mixin absPosition($t: auto, $r: auto, $b: auto, $l: auto) {
+    position: absolute;
+    top: $t;
+    right: $r;
+    bottom: $b;
+    left: $l;
+}

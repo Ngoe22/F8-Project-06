@@ -1,0 +1,112 @@
+@use "../abstracts";
+@use "../components";
+
+/*  FEEDBACK  */
+
+//  PC
+.qa {
+    padding: 95px 0 60px;
+
+    //
+    &__heading {
+        @include abstracts.pj_heading;
+        text-align: left;
+    }
+
+    &__list {
+        margin-top: 80px;
+    }
+    &__item {
+        max-width: 1000px;
+        margin-top: 60px;
+        @include abstracts.flexSpb;
+        gap: 10px;
+        flex-direction: row-reverse;
+        padding: 20px;
+        border-bottom: 1px solid #08182f;
+        transition: 1s;
+        //
+
+        &Title {
+            margin-bottom: 22px;
+            color: #080415;
+            font-size: 3.2rem;
+            font-weight: 500;
+            line-height: 1.25;
+            letter-spacing: -0.128rem;
+            transition: 1s;
+        }
+        &Desc {
+            @include abstracts.pj_desc;
+            text-align: left;
+            max-height: 0;
+            transition: 1.3s ;
+            overflow: hidden;
+            max-width: 487px;
+        }
+        //
+        &Btn {
+            flex-shrink: 0;
+            cursor: pointer;
+            position: relative;
+            @include abstracts.size(50px, 50px, 50%);
+            border: 1px solid #161a1c75;
+            &::before,
+            &::after {
+                content: "";
+                display: block;
+                @include abstracts.absCenter;
+                @include abstracts.size(50%, 5%);
+                background-color: rgba(0, 0, 0, 0.3);
+                transition: 0.8s;
+            }
+        }
+
+        // check
+
+        &Switch:checked {
+            ~ .qa__itemBtn {
+                border-color: abstracts.$primaryColor;
+                &::before,
+                &::after {
+                    background-color: abstracts.$primaryColor;
+                }
+                &::after {
+                    rotate: 90deg;
+                }
+            }
+
+            ~ .qa__itemContent {
+                .qa__itemTitle {
+                    color: abstracts.$primaryColor;
+                }
+                .qa__itemDesc {
+                    max-height: 500px;
+                }
+            }
+        }
+
+        &:has(:checked) {
+            border-color: abstracts.$primaryColor;
+        }
+    }
+}
+// tablet
+@include abstracts.responsive(lg) {
+    //     .qa {
+
+    // }
+}
+
+// mobile
+@include abstracts.responsive(sm) {
+    // .qa {
+    .qa {
+        //
+        &__heading {
+            text-align: center;
+        }
+    }
+
+    // }
+}

@@ -1,0 +1,14 @@
+@use "../abstracts";
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1.6rem;
+    font-family: abstracts.$primaryFont;
+}
+
+* {
+    box-sizing: border-box;
+}

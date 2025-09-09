@@ -1,0 +1,48 @@
+// breakpoints map
+
+$grid-breakpoints: (
+    xs: 0px,
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px,
+    xxl: 1400px,
+);
+$container-max-widths: (
+    xs: 100%,
+    sm: 100%,
+    md: 720px,
+    lg: 960px,
+    xl: 1140px,
+    xxl: 1320px,
+);
+
+/*    */
+
+// abstracts.$grayText ;
+// @include abstracts.pj_heading ;
+
+
+$primaryFont: "DM Sans", sans-serif;
+$primaryColor: rgba(93, 59, 238, 1);
+$primaryColorPro: rgba(93, 59, 238, 1);
+$bgColor_1: #fbfaff;
+$grayText: #51586a;
+
+//  common
+
+@mixin pj_heading {
+    color: #080415;
+    font-size: 5.6rem;
+    font-weight: 500;
+    line-height: 1.17;
+    letter-spacing: -0.224rem;
+    text-align: center;
+}
+
+@mixin pj_desc {
+    color: $grayText;
+    font-size: 1.8rem;
+    line-height: 1.66;
+    text-align: center;
+}

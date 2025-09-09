@@ -1,0 +1,84 @@
+@use "../abstracts";
+@use "../components";
+//
+/*  CLIENTS  */
+
+// PC
+
+.clients {
+    padding: 100px 0 50px;
+
+    &__inner {
+        display: grid;
+        grid-template-columns: 1fr 32% 32%;
+    }
+
+    &__heading {
+        display: flex;
+        width: 350px;
+        @include abstracts.pj_heading;
+        font-size: 4.2rem;
+        letter-spacing: 0;
+        text-align: left;
+    }
+    &__heading::before {
+        content: "";
+        display: block;
+        margin: 22px 13px 0 0;
+        @include abstracts.size(86px, 3px);
+        background-color: abstracts.$primaryColor;
+    }
+    //
+    &__list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 36px 3px;
+    }
+    &__item {
+        @include abstracts.flexLine;
+        gap: 12px;
+        &Logo--wrap {
+            @include abstracts.size(40px, 40px, 50%);
+            @include abstracts.flexCenter;
+        }
+        &Logo {
+            height: 36px;
+        }
+    }
+}
+
+// tablet
+@include abstracts.responsive(lg) {
+    .clients {
+        padding: 100px 0 50px;
+
+        &__inner {
+            grid-template-columns: 100%;
+            row-gap: 36px;
+        }
+
+        &__heading {
+            display: block;
+            width: 280px;
+            text-align: center;
+            margin: auto;
+        }
+
+        &__heading::before {
+            margin: 0 auto;
+        }
+        //
+        &__item {
+            padding-left: 35%;
+        }
+    }
+}
+
+// mobile
+@include abstracts.responsive(sm) {
+    .clients {
+        &__item {
+            padding-left: 15%;
+        }
+    }
+}

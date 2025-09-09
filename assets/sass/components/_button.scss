@@ -1,0 +1,69 @@
+@use "../abstracts";
+
+//  button ----------------------------------------------
+
+@mixin pj_btn {
+    display: block;
+    width: fit-content;
+    padding: 16px 36px;
+    color: #fdfdfd;
+    font-family: "DM Sans";
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 1.66;
+    background: abstracts.$primaryColor;
+    cursor: pointer;
+    transition: 01s;
+}
+@mixin pj_btn--hover {
+    background-color: white;
+    color: abstracts.$primaryColor;
+    box-shadow: 0px 10px 10px 5px rgba(abstracts.$primaryColor, $alpha: 0.3);
+}
+
+//  dots ----------------------------------------------
+
+// &__dots {
+//     @include components.dots;
+// }
+
+// &__dot {
+//     @include components.dot;
+
+//     &::after {
+//         @include components.dot--after;
+//     }
+//     &--active {
+//         @include components.dot--active;
+//         &::after {
+//             @include components.dot--active--after;
+//         }
+//     }
+// }
+
+@mixin dots {
+    width: fit-content;
+    margin: 30px auto 0;
+    @include abstracts.flexLine;
+    gap: 12px;
+}
+@mixin dot {
+    @include abstracts.size(20px, 20px, 50%);
+    @include abstracts.flexCenter;
+    border: 2px solid gray;
+    background-color: gray;
+    cursor: pointer;
+}
+@mixin dot--after {
+    content: "";
+    display: block;
+    @include abstracts.size(50%, 50%, 50%);
+}
+@mixin dot--active {
+    border-color: abstracts.$primaryColor;
+    background-color: transparent;
+    scale: 1.2;
+}
+@mixin dot--active--after {
+    background-color: abstracts.$primaryColor;
+}

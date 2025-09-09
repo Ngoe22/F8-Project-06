@@ -1,0 +1,131 @@
+@use "../abstracts";
+
+/*  HEADER  */
+
+// PC first
+
+.header {
+    padding-top: 20px;
+    background-color: abstracts.$bgColor_1;
+
+    //
+    &__inner {
+        @include abstracts.flexSpb;
+        position: relative;
+        width: 89%;
+        margin: 0 auto;
+    }
+    //
+    &__link {
+        @include abstracts.flexLine;
+        gap: 10px;
+        //
+        &Wrap {
+            @include abstracts.size(45px, 45px);
+            @include abstracts.flexCenter;
+            border-radius: 50%;
+            border: 1px solid #5c3bee6f;
+        }
+        &Icon {
+            display: block;
+            width: 50%;
+        }
+        &Text {
+            font-size: 2.2rem;
+            font-weight: 500;
+            line-height: 1.36;
+            text-decoration-line: underline;
+        }
+    }
+    &__icon {
+        display: block;
+        @include abstracts.size(100px, 100px);
+        @include abstracts.absCenter;
+    }
+    //
+    &__list {
+        @include abstracts.flexSpb;
+        gap: 43px;
+    }
+    &__itemText {
+        display: block;
+        padding: 30px 0;
+        //
+        color: abstracts.$grayText;
+        font-size: 1.8rem;
+    }
+    // for mobile
+    &__switchBtn {
+        @extend .header__linkWrap;
+        cursor: pointer;
+        display: none;
+    }
+
+    &__switch:checked ~ &-mb__overlay,
+    &__switch:checked ~ &-mb__board {
+        visibility: visible;
+        opacity: 1;
+        translate: 0%;
+    }
+
+    %headerMobile--hidden {
+        position: fixed;
+        visibility: hidden;
+        z-index: 10;
+        opacity: 0;
+        transition: 0.5s;
+    }
+
+    &-mb__overlay {
+        @extend %headerMobile--hidden;
+        @include abstracts.absPosition(0, 0, 0, 0);
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+    //
+    &-mb__board {
+        padding: 30px;
+        @extend %headerMobile--hidden;
+        @include abstracts.absPosition(0, 40%, 0, 0);
+        background-color: abstracts.$bgColor_1;
+        translate: -100%;
+    }
+    &-mb__itemText {
+        display: block;
+        color: abstracts.$grayText;
+        font-size: 1.8rem;
+        padding: 20px 0;
+    }
+    &-mb__item ~ &-mb__item {
+        border-top: 1px solid #d6d3e2;
+    }
+}
+
+// tablet
+@include abstracts.responsive(lg) {
+    .header {
+        padding-top: 0px;
+        &__inner {
+            flex-direction: row-reverse;
+            border-bottom: 1px solid #d6d3e2;
+        }
+        &__linkText {
+            display: none;
+        }
+        &__switchBtn {
+            display: flex;
+        }
+
+        &__icon {
+            position: static;
+            @include abstracts.size(70px, 70px);
+            translate: 0 0;
+        }
+        &__list {
+            display: none;
+        }
+    }
+}
+
+// mobile
+@include abstracts.responsive(xs) {
+}

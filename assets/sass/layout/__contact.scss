@@ -1,0 +1,46 @@
+@use "../abstracts";
+@use "../components";
+
+// // PC
+
+.contact {
+    &__inner {
+        padding: 70px 0;
+        background-color: abstracts.$bgColor_1;
+        background-image: url(../img/deco/background-img.png);
+        background-size: 100%;
+        background-position: 50% 60%;
+        background-repeat: repeat;
+    }
+
+    &__icon {
+        display: block;
+        margin: 0 auto 10px;
+        width: 90px;
+    }
+
+    &__heading {
+        @include abstracts.pj_heading;
+    }
+    &__desc {
+        @include abstracts.pj_desc;
+        max-width: 570px;
+        margin: 20px auto 40px;
+    }
+
+    &__btn {
+        @include components.pj_btn;
+        margin: 0 auto;
+        &:hover {
+            @include components.pj_btn--hover;
+        }
+    }
+}
+
+// // tablet
+// @include abstracts.responsive(lg) {
+// }
+
+// // mobile
+// @include abstracts.responsive(sm) {
+// }

@@ -1,0 +1,105 @@
+@use "./abstracts";
+
+/* grid */
+
+// mixins
+@mixin cir_calc($colSize, $colInRow, $infix) {
+    .row-cols#{-$infix}#{-$colInRow} > * {
+        width: 100% / $colInRow;
+    }
+}
+
+@mixin colSpan_calc($colSize, $colSpan, $infix) {
+    .col#{-$infix}#{-$colSpan} {
+        width: percentage($colSpan / $colSize);
+    }
+}
+
+@mixin offset_calc($colSize, $offset, $infix) {
+    .offset-#{$infix}-#{$offset} {
+        margin-left: percentage($offset / $colSize);
+    }
+}
+
+@mixin gutter_calc($i, $infix) {
+    $gutter_length: $i * 5;
+    .gX#{-$infix}-#{$gutter_length} {
+        --gtrX: #{$gutter_length}px;
+    }
+    .gY#{-$infix}-#{$gutter_length} {
+        --gtrY: #{$gutter_length}px;
+    }
+}
+
+// Var
+$columnSize: 12;
+
+// placeholder
+%gutter_padding {
+    padding-top: calc(var(--gtrY) * 0.5);
+    padding-bottom: calc(var(--gtrY) * 0.5);
+    padding-left: calc(var(--gtrX) * 0.5);
+    padding-right: calc(var(--gtrX) * 0.5);
+}
+
+// class
+.container,
+.container--fluid {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    --gtrX: 0px;
+    --gtrY: 0px;
+    //
+    @extend %gutter_padding;
+}
+// .container--fluid {
+//     padding: 0;
+// }
+//
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    //
+    margin-top: calc(var(--gtrY) * -1);
+    margin-bottom: calc(var(--gtrY) * -1);
+    margin-left: calc(var(--gtrX) * -0.5);
+    margin-right: calc(var(--gtrX) * -0.5);
+}
+.col {
+    @extend %gutter_padding;
+    flex-shrink: 0;
+}
+// loop
+@each $key, $value in abstracts.$grid-breakpoints {
+    /* #{$key} : #{$value}  */
+
+    @media (min-width: $value) {
+        /* container width */
+        .container {
+            max-width: map-get(abstracts.$container-max-widths, $key);
+        }
+        /* gutter */
+        @for $i from 0 through $columnSize {
+            @include gutter_calc($i, $key);
+        }
+        /* col in row */
+        @for $i from 1 through $columnSize {
+            @include cir_calc($columnSize, $i, $key);
+        }
+        /* col span */
+        @for $i from 1 through $columnSize {
+            @include colSpan_calc($columnSize, $i, $key);
+        }
+        /* offset */
+        @for $i from 0 through $columnSize {
+            @include offset_calc($columnSize, $i, $key);
+        }
+    }
+}
+
+//
+
+// .................................
+
+
